@@ -17,9 +17,20 @@ pipeline {
     }
 
     stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('sonar') {
-          bat './gradlew sonarqube'
+      parallel {
+        stage('SonarQube analysis') {
+          steps {
+            withSonarQubeEnv('sonar') {
+              bat './gradlew sonarqube'
+            }
+
+          }
+        }
+
+        stage('Test reporting') {
+          steps {
+            cucumber(fileIncludePattern: 'target/report.json', reportTitle: 'CucumberReports')
+          }
         }
 
       }
@@ -34,12 +45,6 @@ pipeline {
       }
       steps {
         waitForQualityGate true
-      }
-    }
-
-    stage('Test reporting') {
-      steps {
-        cucumber 'target/report.json'
       }
     }
 
