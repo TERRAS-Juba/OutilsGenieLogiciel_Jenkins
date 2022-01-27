@@ -11,8 +11,8 @@ pipeline {
         }
       }
       post{
-        always{
-            mail(subject: 'Déploiement d\'une nouvelle version', body: 'Bonjour, Je vous informe qu\'une nouvelle version est disponible sur le github. Cordialement.', from: 'ij_terras@esi.dz', to: 'ij_terras@esi.dz')
-        }
+            always{
+                mail(subject: 'Déploiement d\'une nouvelle version', body: 'Bonjour, Je vous informe qu\'une nouvelle version est disponible sur le github. Cordialement.', from: 'ij_terras@esi.dz', to: 'ij_terras@esi.dz')
+            }
       }
 }
