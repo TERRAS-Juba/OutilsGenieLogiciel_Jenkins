@@ -48,9 +48,15 @@ pipeline {
       }
     }
 
-    stage('Publish') {
+    stage('Deployment') {
       steps {
         bat './gradlew publish'
+      }
+    }
+
+    stage('Slack Notification') {
+      steps {
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'T02SN5X767J/B02SNUPBXK9/a1FqN6Pb3tOzklPYgvQQxLaE', message: 'Une nouvelle version est disponible')
       }
     }
 
