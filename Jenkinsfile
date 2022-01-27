@@ -48,5 +48,11 @@ pipeline {
       }
     }
 
+    stage('Publish') {
+      steps {
+        bat './gradlew publish'
+      }
+    }
+
   }
 }
