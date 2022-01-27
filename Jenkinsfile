@@ -20,11 +20,16 @@ pipeline {
                             bat "./gradlew sonarqube"
                         }
                     }
-                }
-                stage("Quality gate") {
+         }
+         stage("Quality gate") {
                     steps {
                         waitForQualityGate abortPipeline: true
                     }
-                }
+              post{
+                   failure{
+                     mail(subject: 'Erreur Quality Gate', body: 'Bonjour, le code soumis a un statut Quality Gates : failed. Cordialement.', from: 'ij_terras@esi.dz', to: 'ij_terras@esi.dz')
+                   }
+              }
+         }
       }
 }
