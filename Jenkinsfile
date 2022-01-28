@@ -56,7 +56,7 @@ pipeline {
 
     stage('Slack Notification') {
       steps {
-        slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'T02SN5X767J/B02SNUPBXK9/a1FqN6Pb3tOzklPYgvQQxLaE', message: 'Une nouvelle version est disponible')
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'T02SN5X767J/B03097P5X4P/i2GOARDJlNfyRVR3aVR85Bxn', message: 'Une nouvelle version est disponible')
       }
     }
 
